@@ -39,7 +39,11 @@ class CellularController extends Controller
     {
         $data = $request->all();
         
-        /* filter and controll.... TODO */
+        foreach ($data as $value){
+            if (empty($value)){
+                return back();
+            }
+        }
 
         $cellular = new Cellular;
         $cellular->marca = $data['marca'];
