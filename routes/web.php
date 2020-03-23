@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CellularController@index')->name('home');
+
+/* Route::get('/', function () {
+    return view('cellular.index');
+}); */
+
+
+Route::resource('cellulars', 'CellularController');
