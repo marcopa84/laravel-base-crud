@@ -51,7 +51,7 @@ class CellularController extends Controller
 
         if ($saved) {
             /* return index(); */
-            /* return redirect()->route("cellular.index"); */
+            return redirect()->route("cellulars.index");
         } else {
             return back();
         }
