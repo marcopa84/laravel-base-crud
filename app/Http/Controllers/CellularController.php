@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cellular;
 
 class CellularController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,8 @@ class CellularController extends Controller
      */
     public function index()
     {
-        return view('cellular.index');
+        $collection = Cellular::All();
+        return view('cellular.index', compact('collection'));
     }
 
     /**
@@ -34,7 +37,25 @@ class CellularController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        /* filter and controll.... TODO */
+
+        $cellular = new Cellular;
+        $cellular->marca = $data['marca'];
+        $cellular->modello = $data['modello'];
+        $cellular->peso = $data['peso'];
+        $cellular->prezzo = $data['prezzo'];
+        $cellular->imgurl = $data['imgurl'];
+        $saved = $cellular->save();
+
+        if ($saved) {
+            /* return index(); */
+            /* return redirect()->route("cellular.index"); */
+        } else {
+            return back();
+        }
+
     }
 
     /**

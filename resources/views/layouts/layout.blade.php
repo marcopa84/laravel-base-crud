@@ -6,7 +6,8 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
-            <img src="https://images-eu.ssl-images-amazon.com/images/G/29/amazonlaunchpad/it/Launch/Subnav/1045272_EU_22_6_17_Launchpad_Store_Pages_Subnav_Logo_237x50._CB485945317_.png" alt="Amazon"></a>
+            {{-- <img src="https://images-eu.ssl-images-amazon.com/images/G/29/amazonlaunchpad/it/Launch/Subnav/1045272_EU_22_6_17_Launchpad_Store_Pages_Subnav_Logo_237x50._CB485945317_.png" alt="Amazon"></a> --}}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/320px-Amazon_logo.svg.png" alt="Amazon"></a>
             <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -17,7 +18,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a track="" class="nav-link btn btn-outline-danger" href="{{route('cellulars.create')}}">Aggiungi cellulare</a>
+                        <a track="" class="nav-link btn btn-danger" href="{{route('cellulars.create')}}">Aggiungi cellulare</a>
                     </li>
                     
                 </ul>
@@ -28,9 +29,11 @@
 </header>
 
 <main class="margin-top-90">
-    <div class="col-12">
+    <div class="contaner">
         <div class="row">
-            @yield('content')
+            <div class="col-12">
+             @yield('content')
+            </div>
         </div>
     </div>
 </main>
