@@ -7,7 +7,7 @@ use App\Cellular;
 
 class CellularController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +15,8 @@ class CellularController extends Controller
      */
     public function index()
     {
-        $collection = Cellular::All();
-        return view('cellular.index', compact('collection'));
+        $cellulars = Cellular::All();
+        return view('cellular.index', compact('cellulars'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CellularController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
+
         foreach ($data as $value){
             if (empty($value)){
                 return back();
@@ -68,9 +68,12 @@ class CellularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cellular $cellular)
     {
-        //
+      if(empty($cellular)) {
+        abort('404');
+      }
+      return view('cellular.show', compact('cellular') );
     }
 
     /**
@@ -102,8 +105,18 @@ class CellularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cellular $cellular)
     {
-        //
+      if(empty($cellular)) {
+        abort('404');
+      }
+      $id = $cellular->id;
+        $deleted = $cellular->delete();
+        $data = [
+          'id' => $id,
+          'cellulars' => Cellular::all()
+        ];
+
+      return view ("cellular.index", $data);
     }
 }

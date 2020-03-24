@@ -2,7 +2,7 @@
 
 
 <header >
-    
+
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
@@ -16,11 +16,11 @@
                     <li class="nav-item {{(Route::currentRouteName() == 'home') ? "active":""}}">
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a track="" class="nav-link btn btn-danger" href="{{route('cellulars.create')}}">Aggiungi cellulare</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </nav>
@@ -39,11 +39,9 @@
 </main>
 
 <footer>
-    
+
 </footer>
-
-
  @yield('script')
-    
+
 
 @include('layouts.partials._footer')
