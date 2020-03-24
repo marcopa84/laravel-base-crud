@@ -18,7 +18,7 @@
         </div>
         <div class="card-footer">
             <small class="text-muted">Euro: {{$cellular->prezzo}} </small>
-            <div class="">
+            <div class="d-flex justify-content-around">
               <a href="{{route('cellulars.show', $cellular)}}" class="btn btn-primary">Show</a>
             </div>
         </div>

@@ -12,13 +12,13 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav justify-content-around" style="width:50%;">
                     <li class="nav-item {{(Route::currentRouteName() == 'home') ? "active":""}}">
-                        <a class="nav-link" href="{{route('home')}}">Home</a>
+                        <a class="btn btn-outline-primary" href="{{route('home')}}">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a track="" class="nav-link btn btn-danger" href="{{route('cellulars.create')}}">Aggiungi cellulare</a>
+                      <a class="btn btn-primary" href="{{route('cellulars.create')}}">Aggiungi cellulare</a>
                     </li>
 
                 </ul>

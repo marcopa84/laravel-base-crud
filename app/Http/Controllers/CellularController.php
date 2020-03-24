@@ -82,9 +82,12 @@ class CellularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cellular $cellular)
     {
-        //
+      if(empty($cellular)) {
+        abort('404');
+      }
+      return view('cellular.edit', compact('cellular') );
     }
 
     /**
@@ -96,7 +99,7 @@ class CellularController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      @dd($request);
     }
 
     /**
