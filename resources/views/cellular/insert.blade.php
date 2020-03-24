@@ -2,6 +2,15 @@
 
 
 @section('content')
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
     <div class="col-6">
         <form action="{{route('cellulars.store')}}" method="post">
         @method('POST')
@@ -28,5 +37,5 @@
         </div>
         <button type="submit" class="btn btn-danger ">Salva</button>
         </form>
-    </div>   
+    </div>
 @endsection

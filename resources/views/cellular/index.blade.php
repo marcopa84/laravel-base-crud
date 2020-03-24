@@ -4,11 +4,17 @@
 @section('content')
 
  <div class="col-12">
-   @if (session('delete'))
-    <div class="alert alert-danger  " role="alert">Hai cancellato il record {{session('delete')}}</div>
+
+  @if (session('delete'))
+    <div class="alert alert-danger" role="alert">Hai cancellato il record {{session('delete')->id}}</div>
   @endif
-   @if (session('update'))
-    <div class="alert alert-success  " role="alert">Hai aggiornato il record {{session('update')->id}} della: {{session('update')->marca}} modello: {{session('update')->modello}} </div>
+
+  @if (session('insert'))
+    <div class="alert alert-primary" role="alert">Hai inserito un nuovo record id:{{session('insert')->id}} della: {{session('insert')->marca}} Modello: {{session('insert')->modello}} </div>
+  @endif
+
+  @if (session('update'))
+    <div class="alert alert-success" role="alert">Hai aggiornato il record {{session('update')->id}} della: {{session('update')->marca}} Modello: {{session('update')->modello}} </div>
   @endif
 
     <div class="card-deck">

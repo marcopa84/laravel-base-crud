@@ -44,6 +44,13 @@ class CellularController extends Controller
                 return back();
             }
         }
+        $request->validate([
+          'marca' => 'required|max:255',
+          'modello' => 'required|unique:cellulars|max:255',
+          'peso' => 'required',
+          'prezzo' => 'required',
+          'imgurl' => 'required|URL',
+        ]);
 
         $cellular = new Cellular;
         $cellular->marca = $data['marca'];
@@ -55,7 +62,7 @@ class CellularController extends Controller
 
         if ($saved) {
             /* return index(); */
-            return redirect()->route("cellulars.index");
+            return redirect()->route("cellulars.index")->with('insert', $cellular );;
         } else {
             return back();
         }
@@ -102,6 +109,13 @@ class CellularController extends Controller
       if(empty($cellular)) {
         abort('404');
       }
+      $request->validate([
+        'marca' => 'required|max:255',
+        'modello' => 'required|unique:cellulars|max:255',
+        'peso' => 'required',
+        'prezzo' => 'required',
+        'imgurl' => 'required|URL',
+      ]);
       $data = $request->all();
       $cellular->update($data);
       return redirect()->route("cellulars.index")->with('update', $cellular );
@@ -118,13 +132,13 @@ class CellularController extends Controller
       if(empty($cellular)) {
         abort('404');
       }
-      $id = $cellular->id;
+
         $deleted = $cellular->delete();
-        $data = [
-          'id' => $id,
-          'cellulars' => Cellular::all()
-        ];
-      return redirect()->route("cellulars.index")->with('delete', $id );
-      // return view ("cellular.index", $data);
+
+      if ($deleted) {
+        return redirect()->route("cellulars.index")->with('delete', $cellular );
+      }
+
+
     }
 }
