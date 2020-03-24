@@ -4,9 +4,13 @@
 @section('content')
 
  <div class="col-12">
-    @if(!empty($id))
-      <div class="alert alert-danger  " role="alert">Hai cancellato il record {{$id}}</div>
-    @endif
+   @if (session('delete'))
+    <div class="alert alert-danger  " role="alert">Hai cancellato il record {{session('delete')}}</div>
+  @endif
+   @if (session('update'))
+    <div class="alert alert-success  " role="alert">Hai aggiornato il record {{session('update')->id}} della: {{session('update')->marca}} modello: {{session('update')->modello}} </div>
+  @endif
+
     <div class="card-deck">
     @foreach ($cellulars as $cellular)
     <div class="card">
@@ -17,7 +21,7 @@
             <p class="card-text">Peso:{{$cellular->peso}}</p>
         </div>
         <div class="card-footer">
-            <small class="text-muted">Euro: {{$cellular->prezzo}} </small>
+            <h2 class="text-muted">Euro: {{$cellular->prezzo}} </h2>
             <div class="d-flex justify-content-around">
               <a href="{{route('cellulars.show', $cellular)}}" class="btn btn-primary">Show</a>
             </div>

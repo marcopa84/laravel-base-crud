@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="col-6">
-        <form action="{{route('cellulars.update', $cellular->id)}}" method="patch">
-        @method('patch')
+        <form action="{{route('cellulars.update', $cellular)}}" method="POST">
+        @method('PATCH')
         @csrf
         <div class="form-group">
         <label for="marca">Marca:</label>
@@ -27,7 +27,7 @@
         <input type="text" class="form-control" name="imgurl" value="{{$cellular->imgurl}}">
         <input type="hidden" name="id" value="{{$cellular->id}}">
         </div>
-        <button type="submit" class="btn btn-danger ">Salva</button>
+        <button type="submit" class="btn btn-success ">Aggiorna</button>
         </form>
     </div>
 @endsection

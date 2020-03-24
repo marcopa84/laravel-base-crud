@@ -97,9 +97,14 @@ class CellularController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cellular $cellular)
     {
-      @dd($request);
+      if(empty($cellular)) {
+        abort('404');
+      }
+      $data = $request->all();
+      $cellular->update($data);
+      return redirect()->route("cellulars.index")->with('update', $cellular );
     }
 
     /**
@@ -119,7 +124,7 @@ class CellularController extends Controller
           'id' => $id,
           'cellulars' => Cellular::all()
         ];
-
-      return view ("cellular.index", $data);
+      return redirect()->route("cellulars.index")->with('delete', $id );
+      // return view ("cellular.index", $data);
     }
 }
